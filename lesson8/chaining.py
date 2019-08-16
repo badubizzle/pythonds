@@ -6,13 +6,22 @@ class MyHashTable(object):
         for i in range(10):
             self._data.append([])
 
+    def create_sandboxes(self, list_number):
+        self.length = list_number
+        for i in range(list_number):
+            self._data.append([])
+        return
+
     def _key_hash(self, key):
         """
         Returns integer given a key
         """
-        return int(key) % 10
+        # self.create_sandboxes(20)
+        import pdb
+        pdb.set_trace()
+        return key.split(' ')[1]
 
-    def insert(self, key, value):
+    def insert(self, key, value, max_number):
         index = self._key_hash(key)
         bucket = self._data[index]
 
@@ -23,6 +32,8 @@ class MyHashTable(object):
         data = (key, value)
         bucket.append(data)
         self._data[index] = bucket
+        import pdb
+        pdb.set_trace()
 
         # insert("2", 23)
         # insert("12", 3)
@@ -62,16 +73,11 @@ class MyHashTable(object):
                 array_index = bucket.index(array_tuple)
                 bucket[array_index] = (array_tuple[0], value)
 
-
-h = MyHashTable()
-
-h.insert("2", 50)
-h.insert("5", 25)
-h.update_hash("2", 45)
-h.insert("12", 30)
-h.insert("14", 35)
-
-print(h.get("2"))
-print(h.get("5"))
-print(h.get("12"))
-# print(h.get("3"))
+    def hotdesk_length(self, hotdesk_array):
+        hotdesk_count = 0
+        stripped_hotdesks = []
+        for hot_desk in hotdesk_array:
+            strip_hotdesk = hot_desk.strip(' ')
+            stripped_hotdesks.append(strip_hotdesk)
+            hotdesk_count += 1
+        return hotdesk_count, stripped_hotdesks

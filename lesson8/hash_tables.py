@@ -51,4 +51,4 @@ h.insert("5", 25)
 
 print(h.get("2"))
 print(h.get("5"))
-print(h.get("3"))
+# print(h.get("3"))
